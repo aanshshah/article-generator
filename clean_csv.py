@@ -11,6 +11,9 @@ def remove_javascript(body_text):
 	return body_text
 
 def remove_unbalanced_parenthesis(body_text):
+	to_replace = [")                  ", ")      ","             ", "            ", "      "]
+	for r in to_replace:
+		body_text = body_text.replace(r, "")
 	return body_text
 
 def process_text(f):
@@ -30,8 +33,6 @@ def main():
 	csv.field_size_limit(sys.maxsize)
 	f = open('output_all.csv')
 	process_text(f)
-	# reader = csv.reader(f,delimiter=',', quoting=csv.QUOTE_ALL)
-	# print(process_text(reader))
 
 if __name__ == '__main__':
 	main()
